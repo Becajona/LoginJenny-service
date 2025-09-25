@@ -11,12 +11,13 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: 'password123*',
+      password: 'dmidecimo25',
       database: 'e_commercebd',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],//aqui vamos agregando las entidades que tengan .entity
       synchronize: true,
     }),
     UsersModule,
+    
   ],
   })
 
