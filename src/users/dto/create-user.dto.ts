@@ -7,3 +7,6 @@ export class CreateUserDto {
   image?: string;
   notification_token?: string;
 }
+
+
+
