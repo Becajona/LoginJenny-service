@@ -17,11 +17,4 @@ export class UpdateUserDto {
   @Matches(/^[0-9]{10}$/, { message: 'El teléfono debe tener exactamente 10 dígitos' })
   phone?: string;
 
-  @IsOptional()
-  @IsString({ message: 'La imagen debe ser un texto' })
-  image?: string;
-
-  @IsOptional()
-  @IsString({ message: 'El token debe ser un texto' })
-  notification_token?: string;
 }

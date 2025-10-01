@@ -9,9 +9,7 @@ import {
   Delete 
 } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
-
 import { UpdateUserDto } from '../auth/dto/update-user.dto';
-
 import { UsersService } from './users.service';
 
 @Controller('users')
@@ -20,31 +18,34 @@ export class UsersController {
 
   // Crear usuario
   @Post()
-  create(@Body() user: CreateUserDto) {
-    return this.usersService.create(user);
+  async create(@Body() user: CreateUserDto) {
+    return await this.usersService.create(user);
   }
 
   // Obtener todos los usuarios
   @Get()
-  findAll() {
-    return this.usersService.findAll();
+  async findAll() {
+    return await this.usersService.findAll();
   }
 
   // Obtener usuario por ID
   @Get(':id')
-  findById(@Param('id', ParseIntPipe) id: number) {
-    return this.usersService.findOne(id);
+  async findById(@Param('id', ParseIntPipe) id: number) {
+    return await this.usersService.findOne(id);
   }
 
   // Actualizar usuario
   @Put(':id')
-  update(@Param('id', ParseIntPipe) id: number, @Body() user: UpdateUserDto) {
-    return this.usersService.update(id, user);
+  async update(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() user: UpdateUserDto,
+  ) {
+    return await this.usersService.update(id, user);
   }
 
   // Eliminar usuario
   @Delete(':id')
-  remove(@Param('id', ParseIntPipe) id: number) {
-    return this.usersService.remove(id);
+  async remove(@Param('id', ParseIntPipe) id: number) {
+    return await this.usersService.remove(id);
   }
 }

@@ -5,7 +5,6 @@ import { User } from './user.entity';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from '../auth/dto/update-user.dto';
 
-
 @Injectable()
 export class UsersService {
   constructor(
@@ -35,16 +34,16 @@ export class UsersService {
     return rest;
   }
 
-  // Actualizar usuario por ID
+  // Actualizar usuario por ID (tal cual tu imagen)
   async update(id: number, user: UpdateUserDto) {
-    const userFound = await this.usersRepository.findOneBy({ id });
+    const userFound = await this.usersRepository.findOneBy({ id: id });
 
     if (!userFound) {
-      throw new HttpException('Usuario no existe', HttpStatus.NOT_FOUND);
+      return new HttpException('Usuario no existe', HttpStatus.NOT_FOUND); //404 información no encontrada
     }
 
     const updatedUser = Object.assign(userFound, user);
-    return await this.usersRepository.save(updatedUser);
+    return this.usersRepository.save(updatedUser); //Actualizamos datos
   }
 
   // Eliminar usuario por ID
@@ -58,3 +57,6 @@ export class UsersService {
     return await this.usersRepository.delete({ id });
   }
 }
+
+
+
